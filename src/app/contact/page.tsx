@@ -197,10 +197,10 @@ export default function Contact() {
                       Email
                     </p>
                     <a
-                      href="mailto:hello@wilsonwebdesignfl.com"
+                      href="mailto:wilsonwebdesignfl@gmail.com"
                       className="text-white/80 text-sm hover:text-gold transition-colors"
                     >
-                      hello@wilsonwebdesignfl.com
+                      wilsonwebdesignfl@gmail.com
                     </a>
                   </div>
                   <div>

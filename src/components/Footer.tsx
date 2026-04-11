@@ -48,8 +48,8 @@ export default function Footer() {
             </h4>
             <ul className="mt-4 space-y-3 text-sm">
               <li>
-                <a href="mailto:hello@wilsonwebdesignfl.com" className="hover:text-gold transition-colors">
-                  hello@wilsonwebdesignfl.com
+                <a href="mailto:wilsonwebdesignfl@gmail.com" className="hover:text-gold transition-colors">
+                  wilsonwebdesignfl@gmail.com
                 </a>
               </li>
               <li>
