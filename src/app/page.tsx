@@ -66,9 +66,12 @@ export default function Home() {
             <div className="mt-16 grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
               <AnimatedSection delay={0.2} className="md:col-span-5">
                 <p className="text-cream/70 text-base md:text-lg leading-relaxed max-w-md">
-                  A small studio that builds considered,
-                  high-performance websites for people who care
-                  about the details.
+                  Custom websites for small businesses in Southwest
+                  Florida and beyond. Built with care, designed to
+                  convert, and delivered fast.
+                </p>
+                <p className="mt-6 text-xs uppercase tracking-[0.25em] text-cream/40">
+                  Web Design · Development · E-commerce · SEO
                 </p>
               </AnimatedSection>
 

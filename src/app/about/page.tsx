@@ -68,9 +68,14 @@ export default function About() {
                 with modern development, we build websites that don&apos;t just
                 look good — they perform, convert, and grow with your business.
               </p>
-              <p className="font-display italic text-3xl md:text-4xl font-light text-gold-dark">
-                We care about the details so you don&apos;t have to.
-              </p>
+              <blockquote className="pt-8 border-t border-dark/10">
+                <p className="font-display italic text-3xl md:text-4xl font-light text-gold-dark leading-snug">
+                  We care about the details so you don&apos;t have to.
+                </p>
+                <footer className="mt-6 text-xs uppercase tracking-[0.2em] text-dark/60">
+                  — Ariana W., Founder
+                </footer>
+              </blockquote>
             </div>
           </div>
         </div>
