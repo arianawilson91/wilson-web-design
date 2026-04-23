@@ -24,7 +24,10 @@ export default function RotatingWord({
   }, [words.length, interval]);
 
   return (
-    <span className={`relative inline-block align-baseline ${className}`}>
+    <span
+      className={`relative inline-block align-baseline overflow-hidden ${className}`}
+      style={{ paddingBottom: "0.25em", marginBottom: "-0.25em" }}
+    >
       {/* Invisible ghost of the longest word to reserve width */}
       <span aria-hidden className="invisible">
         {words.reduce((a, b) => (a.length > b.length ? a : b))}
@@ -32,9 +35,9 @@ export default function RotatingWord({
       <AnimatePresence mode="wait">
         <motion.span
           key={words[index]}
-          initial={{ y: "0.6em", opacity: 0 }}
+          initial={{ y: "1em", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: "-0.6em", opacity: 0 }}
+          exit={{ y: "-1em", opacity: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="absolute left-0 top-0 whitespace-nowrap"
         >
