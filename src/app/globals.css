@@ -1,26 +1,74 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #ffffff;
-  --color-foreground: #111111;
-  --color-gold: #c9a84c;
-  --color-gold-light: #d4b85a;
-  --color-gold-dark: #b8933a;
-  --color-dark: #111111;
-  --color-dark-light: #1a1a1a;
-  --color-dark-lighter: #2a2a2a;
-  --color-gray: #6b7280;
-  --color-gray-light: #f3f4f6;
-  --color-gray-lighter: #f9fafb;
+  /* Warm, editorial palette */
+  --color-background: #f5f1e8;          /* bone/cream */
+  --color-foreground: #0f0f0e;          /* off-black */
+
+  /* Gold — warmer champagne, not brassy */
+  --color-gold: #c9a87a;
+  --color-gold-light: #d4b886;
+  --color-gold-dark: #b8946a;
+
+  /* Dark tones */
+  --color-dark: #0f0f0e;                /* true off-black */
+  --color-dark-light: #1a1917;          /* warmer dark */
+  --color-dark-lighter: #24221f;
+
+  /* Neutrals — warmer, less blue */
+  --color-cream: #f5f1e8;
+  --color-cream-dark: #ebe5d6;
+  --color-gray: #6b665c;                /* warm gray */
+  --color-gray-light: #e8e2d3;
+  --color-gray-lighter: #f0ebdd;
+
+  /* Fonts */
   --font-sans: var(--font-inter);
+  --font-serif: var(--font-fraunces);
 }
 
 body {
   background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv01", "cv11";
+  -webkit-font-smoothing: antialiased;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Grain/noise texture overlay for dark sections */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.4 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.15;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+
+/* Editorial display type utility */
+.font-display {
+  font-family: var(--font-serif), Georgia, serif;
+  font-feature-settings: "ss01", "ss02";
+  letter-spacing: -0.02em;
+}
+
+/* Tighten Inter at display sizes */
+.display-tight {
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
 }

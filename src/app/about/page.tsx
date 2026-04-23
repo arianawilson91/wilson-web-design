@@ -4,49 +4,29 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About | Wilson Web Design",
   description:
-    "Learn about Wilson Web Design — our story, our values, and why we're passionate about building exceptional websites.",
+    "A small studio from Southwest Florida building considered websites for people who care about the details.",
 };
 
-const values = [
+const principles = [
   {
-    title: "Quality Over Quantity",
-    description:
-      "We take on a limited number of projects at a time so we can give each client our full attention and deliver outstanding results.",
-    icon: (
-      <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
-      </svg>
-    ),
+    n: "01",
+    title: "Quality over quantity",
+    desc: "We take on a limited number of projects each quarter so every client gets our full attention.",
   },
   {
-    title: "Transparent Communication",
-    description:
-      "No jargon, no hidden fees. We keep you informed every step of the way and make sure you understand exactly what you're getting.",
-    icon: (
-      <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
-      </svg>
-    ),
+    n: "02",
+    title: "Honest communication",
+    desc: "No jargon, no hidden fees. We keep you informed at every step and make sure you know what you're getting.",
   },
   {
-    title: "Results-Driven Design",
-    description:
-      "A great-looking website is just the beginning. We design with your business goals in mind — more leads, more sales, more growth.",
-    icon: (
-      <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
-      </svg>
-    ),
+    n: "03",
+    title: "Design with purpose",
+    desc: "A great-looking website is just the start. We design with your goals in mind — more leads, more sales, more growth.",
   },
   {
-    title: "Long-Term Partnership",
-    description:
-      "We're not just here for the launch. We build lasting relationships with our clients and provide ongoing support as your business grows.",
-    icon: (
-      <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
-      </svg>
-    ),
+    n: "04",
+    title: "Long-term partnership",
+    desc: "We're not just here for launch day. We build relationships and provide support as your business grows.",
   },
 ];
 
@@ -54,88 +34,76 @@ export default function About() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-dark pt-32 pb-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <p className="text-gold font-semibold text-sm uppercase tracking-widest">
-              About Us
-            </p>
-            <h1 className="mt-3 text-5xl font-bold text-white">
-              The Team Behind Your Next Website
-            </h1>
-            <p className="mt-6 text-lg text-white/60 leading-relaxed">
-              We&apos;re passionate about creating beautiful, functional websites
-              that help businesses thrive in the digital world.
-            </p>
-          </div>
+      <section className="bg-cream pt-48 pb-24">
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
+          <p className="text-xs uppercase tracking-[0.3em] text-dark/50 mb-12">
+            § About / The Studio
+          </p>
+          <h1 className="font-display display-tight text-6xl md:text-8xl lg:text-[10rem] font-light text-dark leading-[0.95]">
+            A small studio
+            <br />
+            <span className="italic text-gold-dark">from Florida.</span>
+          </h1>
         </div>
       </section>
 
-      {/* Story */}
-      <section className="py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <p className="text-gold font-semibold text-sm uppercase tracking-widest">
-                Our Story
-              </p>
-              <h2 className="mt-3 text-4xl font-bold text-dark">
-                From Passion to Profession
-              </h2>
-              <p className="mt-6 text-gray leading-relaxed">
-                Wilson Web Design was founded with a simple belief: every
-                business deserves a website that truly represents who they are.
-                Too many companies settle for generic templates that fail to
-                capture their unique identity.
-              </p>
-              <p className="mt-4 text-gray leading-relaxed">
-                We started this journey to change that. By combining creative
-                design with modern development practices, we build websites that
-                not only look stunning but also perform exceptionally — helping
-                our clients attract more customers and grow their businesses.
-              </p>
-              <p className="mt-4 text-gray leading-relaxed">
-                We believe in quality over quantity, taking on a select number
-                of projects at a time so we can give each client the attention
-                they deserve.
+      {/* Story — two columns */}
+      <section className="bg-cream pb-32">
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
+          <div className="border-t border-dark/10 pt-16 grid grid-cols-1 md:grid-cols-12 gap-12">
+            <div className="md:col-span-5">
+              <p className="text-xs uppercase tracking-[0.3em] text-dark/50">
+                — Story
               </p>
             </div>
-            <div className="bg-dark rounded-2xl p-12">
-              <blockquote className="text-white/90 text-lg italic leading-relaxed">
-                &ldquo;We believe that great design isn&apos;t just about
-                aesthetics — it&apos;s about creating an experience that drives
-                real business results.&rdquo;
-              </blockquote>
-              <div className="mt-6">
-                <p className="text-gold font-semibold">Wilson Web Design</p>
-                <p className="text-white/50 text-sm">Founder</p>
-              </div>
+            <div className="md:col-span-7 space-y-8 text-lg md:text-xl text-dark/80 leading-relaxed">
+              <p>
+                Wilson Web Design started with a simple belief: every business
+                deserves a website that truly represents who they are. Too many
+                settle for generic templates that fail to capture what makes
+                them different.
+              </p>
+              <p>
+                We&apos;re here to change that. By combining thoughtful design
+                with modern development, we build websites that don&apos;t just
+                look good — they perform, convert, and grow with your business.
+              </p>
+              <p className="font-display italic text-3xl md:text-4xl font-light text-gold-dark">
+                We care about the details so you don&apos;t have to.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-24 bg-gray-lighter">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto">
-            <p className="text-gold font-semibold text-sm uppercase tracking-widest">
-              Our Values
-            </p>
-            <h2 className="mt-3 text-4xl font-bold text-dark">
-              What We Stand For
-            </h2>
-          </div>
+      {/* Principles — editorial list */}
+      <section className="bg-dark text-cream py-32 lg:py-48 relative overflow-hidden grain">
+        <div className="relative z-10 mx-auto max-w-[1600px] px-6 lg:px-12">
+          <p className="text-xs uppercase tracking-[0.3em] text-cream/50 mb-12">
+            § Principles
+          </p>
+          <h2 className="font-display display-tight text-5xl md:text-7xl lg:text-[8rem] font-light leading-[0.95] mb-24">
+            How we
+            <br />
+            <span className="italic text-gold">work.</span>
+          </h2>
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-            {values.map((value) => (
-              <div key={value.title} className="flex gap-5">
-                <div className="text-gold flex-shrink-0">{value.icon}</div>
-                <div>
-                  <h3 className="text-lg font-bold text-dark">{value.title}</h3>
-                  <p className="mt-2 text-gray text-sm leading-relaxed">
-                    {value.description}
-                  </p>
+          <div className="border-t border-cream/10">
+            {principles.map((p) => (
+              <div
+                key={p.n}
+                className="border-b border-cream/10 py-10 md:py-14 grid grid-cols-12 gap-4 md:gap-8"
+              >
+                <div className="col-span-2 md:col-span-1 font-display italic text-2xl md:text-3xl text-gold">
+                  {p.n}
+                </div>
+                <div className="col-span-10 md:col-span-5">
+                  <h3 className="font-display text-2xl md:text-4xl font-light text-cream">
+                    {p.title}
+                  </h3>
+                </div>
+                <div className="col-span-12 md:col-span-6">
+                  <p className="text-cream/60 leading-relaxed">{p.desc}</p>
                 </div>
               </div>
             ))}
@@ -144,20 +112,22 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-dark">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white">
-            Let&apos;s Work <span className="text-gold">Together</span>
+      <section className="bg-cream py-32 lg:py-48">
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
+          <h2 className="font-display display-tight text-5xl md:text-7xl lg:text-[9rem] font-light text-dark leading-[0.95]">
+            Let&apos;s work
+            <br />
+            <span className="italic text-gold-dark">together.</span>
           </h2>
-          <p className="mt-4 text-white/60 max-w-xl mx-auto">
-            We&apos;d love to learn about your project and see how we can help.
-          </p>
-          <Link
-            href="/contact"
-            className="mt-8 inline-block rounded-md bg-gold px-8 py-3.5 text-sm font-semibold text-dark transition-colors hover:bg-gold-light"
-          >
-            Get in Touch
-          </Link>
+          <div className="mt-12">
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-4 bg-dark text-cream px-8 py-5 hover:bg-gold hover:text-dark transition-colors"
+            >
+              <span className="text-sm uppercase tracking-[0.2em]">Get in touch</span>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </Link>
+          </div>
         </div>
       </section>
     </>

@@ -2,144 +2,122 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Blog | Wilson Web Design",
+  title: "Journal | Wilson Web Design",
   description:
-    "Web design tips, trends, and insights from Wilson Web Design. Learn how to improve your online presence.",
+    "Thoughts and notes on web design, craft, and running a small studio.",
 };
 
 const posts = [
   {
     slug: "why-your-business-needs-a-custom-website",
-    title: "Why Your Business Needs a Custom Website in 2026",
+    title: "Why your business needs a custom website",
     excerpt:
-      "Template websites might be cheap, but they're costing you customers. Here's why investing in a custom website pays off in the long run.",
-    category: "Web Design",
+      "Template websites might be cheap, but they're costing you customers. Why investing in a custom website pays off in the long run.",
+    category: "Craft",
     date: "April 10, 2026",
-    readTime: "5 min read",
+    readTime: "5 min",
+    index: "01",
   },
   {
     slug: "5-web-design-trends",
-    title: "5 Web Design Trends That Are Dominating Right Now",
+    title: "Five web design trends worth paying attention to",
     excerpt:
-      "From bold typography to dark mode designs, here are the trends that are shaping the web in 2026 and how you can use them for your business.",
+      "From bold typography to dark mode designs, the trends shaping the web in 2026 — and how to use them without looking like everyone else.",
     category: "Trends",
     date: "April 5, 2026",
-    readTime: "4 min read",
+    readTime: "4 min",
+    index: "02",
   },
   {
     slug: "how-to-choose-a-web-designer",
-    title: "How to Choose the Right Web Designer for Your Business",
+    title: "How to choose the right web designer",
     excerpt:
-      "Not all web designers are created equal. Here's what to look for — and what red flags to watch out for — when hiring someone to build your site.",
-    category: "Tips",
+      "Not all web designers are created equal. What to look for — and what red flags to watch out for — when hiring someone to build your site.",
+    category: "Notes",
     date: "March 28, 2026",
-    readTime: "6 min read",
+    readTime: "6 min",
+    index: "03",
   },
 ];
-
-const categoryColors: Record<string, string> = {
-  "Web Design": "bg-gold/10 text-gold",
-  Trends: "bg-blue-500/10 text-blue-500",
-  Tips: "bg-emerald-500/10 text-emerald-500",
-};
 
 export default function Blog() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-dark pt-32 pb-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <p className="text-gold font-semibold text-sm uppercase tracking-widest">
-              Blog
-            </p>
-            <h1 className="mt-3 text-5xl font-bold text-white">
-              Insights & Tips
-            </h1>
-            <p className="mt-6 text-lg text-white/60 leading-relaxed">
-              Web design tips, trends, and insights to help your business
-              succeed online.
-            </p>
-          </div>
+      <section className="bg-cream pt-48 pb-24">
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
+          <p className="text-xs uppercase tracking-[0.3em] text-dark/50 mb-12">
+            § Journal / Writing
+          </p>
+          <h1 className="font-display display-tight text-6xl md:text-8xl lg:text-[10rem] font-light text-dark leading-[0.95]">
+            Notes on
+            <br />
+            <span className="italic text-gold-dark">the craft.</span>
+          </h1>
         </div>
       </section>
 
-      {/* Blog Posts Grid */}
-      <section className="py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Blog posts — editorial list */}
+      <section className="bg-cream pb-32">
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
+          <div className="border-t border-dark/10">
             {posts.map((post) => (
-              <article
+              <Link
                 key={post.slug}
-                className="group rounded-xl border border-gray-200 overflow-hidden transition-all hover:shadow-lg hover:border-gold/30 hover:-translate-y-1"
+                href={`/blog/${post.slug}`}
+                className="group block border-b border-dark/10 py-10 md:py-16"
               >
-                {/* Placeholder image */}
-                <div className="h-48 bg-gradient-to-br from-dark to-dark-lighter flex items-center justify-center">
-                  <svg
-                    className="h-12 w-12 text-gold/30"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1}
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3z"
-                    />
-                  </svg>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span
-                      className={`text-xs font-semibold rounded-full px-3 py-1 ${
-                        categoryColors[post.category] || "bg-gray-light text-gray"
-                      }`}
-                    >
-                      {post.category}
-                    </span>
-                    <span className="text-xs text-gray">{post.readTime}</span>
+                <div className="grid grid-cols-12 gap-4 md:gap-8 items-baseline">
+                  <div className="col-span-2 md:col-span-1 font-display italic text-2xl md:text-3xl text-gold-dark">
+                    {post.index}
                   </div>
-                  <h2 className="text-lg font-bold text-dark group-hover:text-gold transition-colors leading-snug">
-                    {post.title}
-                  </h2>
-                  <p className="mt-2 text-gray text-sm leading-relaxed">
-                    {post.excerpt}
-                  </p>
-                  <div className="mt-4 flex items-center justify-between">
-                    <span className="text-xs text-gray">{post.date}</span>
-                    <span className="text-gold text-sm font-medium group-hover:underline">
-                      Read More &rarr;
+                  <div className="col-span-10 md:col-span-1 md:col-start-2 flex md:flex-col gap-4 md:gap-2 text-xs uppercase tracking-[0.2em] text-dark/50">
+                    <span>{post.category}</span>
+                    <span>{post.readTime}</span>
+                  </div>
+                  <div className="col-span-12 md:col-span-7 md:col-start-4">
+                    <h2 className="font-display text-3xl md:text-5xl font-light text-dark group-hover:italic transition-all duration-500 leading-tight">
+                      {post.title}
+                    </h2>
+                    <p className="mt-4 text-dark/70 leading-relaxed max-w-2xl">
+                      {post.excerpt}
+                    </p>
+                  </div>
+                  <div className="col-span-12 md:col-span-2 md:col-start-11 flex md:justify-end items-baseline">
+                    <span className="text-xs uppercase tracking-[0.2em] text-dark/50 group-hover:text-gold-dark transition-colors">
+                      Read ↗
                     </span>
                   </div>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
 
-          <div className="mt-16 text-center">
-            <p className="text-gray text-sm">
-              More articles coming soon — check back regularly.
+          <div className="mt-20 text-center">
+            <p className="font-display italic text-2xl md:text-3xl text-dark/50">
+              More coming soon.
             </p>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-dark">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white">
-            Need a Website That <span className="text-gold">Works</span>?
+      <section className="bg-dark text-cream py-32 lg:py-48 relative overflow-hidden grain">
+        <div className="relative z-10 mx-auto max-w-[1600px] px-6 lg:px-12">
+          <h2 className="font-display display-tight text-5xl md:text-7xl lg:text-[9rem] font-light leading-[0.95]">
+            Enough reading —
+            <br />
+            <span className="italic text-gold">let&apos;s build.</span>
           </h2>
-          <p className="mt-4 text-white/60 max-w-xl mx-auto">
-            Stop reading about great web design — let us build one for you.
-          </p>
-          <Link
-            href="/contact"
-            className="mt-8 inline-block rounded-md bg-gold px-8 py-3.5 text-sm font-semibold text-dark transition-colors hover:bg-gold-light"
-          >
-            Get a Free Quote
-          </Link>
+          <div className="mt-12">
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-4 bg-gold text-dark px-8 py-5 hover:bg-cream transition-colors"
+            >
+              <span className="text-sm uppercase tracking-[0.2em]">Start a project</span>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </Link>
+          </div>
         </div>
       </section>
     </>

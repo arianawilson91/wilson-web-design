@@ -3,26 +3,32 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Portfolio | Wilson Web Design",
+  title: "Work | Wilson Web Design",
   description:
-    "Browse our portfolio of custom web design projects. See how we've helped businesses establish a powerful online presence.",
+    "A selection of recent web design and development work from Wilson Web Design.",
 };
 
 const projects = [
   {
+    index: "01",
     title: "Pud's Pit BBQ",
-    category: "Restaurant / Food Truck",
+    category: "Food & Beverage",
+    year: "2025",
+    location: "Southwest Florida",
     description:
-      "A bold, modern website for a veteran and family-owned BBQ food truck in Southwest Florida. Features include an interactive menu, catering request form, location schedule, and photo gallery showcasing their smoked meats.",
+      "A bold, modern website for a veteran and family-owned BBQ food truck. Features an interactive menu, catering request form, location schedule, and photo gallery.",
     tags: ["Custom Design", "Catering Form", "Mobile-First", "Brand-Driven"],
     url: "https://pudspit.com",
     image: "/images/portfolio/pudspit.png",
   },
   {
+    index: "02",
     title: "Lisa Wilson Design",
     category: "Interior Design",
+    year: "2025",
+    location: "Southwest Florida",
     description:
-      "An elegant, luxury website for a kitchen design and remodeling business serving Southwest Florida. Showcases a stunning portfolio of custom kitchens, bathrooms, and cabinetry with a clean, sophisticated aesthetic.",
+      "An elegant, luxury website for a kitchen design and remodeling business. Showcases a portfolio of custom kitchens, bathrooms, and cabinetry with a clean, sophisticated aesthetic.",
     tags: ["Portfolio Showcase", "Luxury Design", "Responsive", "SEO Optimized"],
     url: "https://lisawilsondesign.com",
     image: "/images/portfolio/lisawilsondesign.png",
@@ -33,99 +39,116 @@ export default function Portfolio() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-dark pt-32 pb-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <p className="text-gold font-semibold text-sm uppercase tracking-widest">
-              Our Work
-            </p>
-            <h1 className="mt-3 text-5xl font-bold text-white">
-              Projects We&apos;re Proud Of
-            </h1>
-            <p className="mt-6 text-lg text-white/60 leading-relaxed">
-              Take a look at some of the websites we&apos;ve designed and
-              developed for real clients across different industries.
+      <section className="bg-cream pt-48 pb-24">
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
+          <div className="flex items-end justify-between">
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-dark/50 mb-12">
+                § Work / 2025
+              </p>
+              <h1 className="font-display display-tight text-6xl md:text-8xl lg:text-[10rem] font-light text-dark leading-[0.95]">
+                Selected
+                <br />
+                <span className="italic text-gold-dark">work.</span>
+              </h1>
+            </div>
+            <p className="hidden md:block text-xs uppercase tracking-[0.3em] text-dark/50">
+              {projects.length} projects
             </p>
           </div>
         </div>
       </section>
 
-      {/* Portfolio Grid */}
-      <section className="py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {projects.map((project) => (
-              <a
-                key={project.title}
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group rounded-xl border border-gray-200 overflow-hidden transition-all hover:shadow-xl hover:border-gold/50 hover:-translate-y-1"
-              >
-                {/* Website screenshot */}
-                <div className="relative h-64 overflow-hidden bg-gray-light">
-                  <Image
-                    src={project.image}
-                    alt={`${project.title} website screenshot`}
-                    fill
-                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-dark/0 group-hover:bg-dark/70 transition-all flex items-center justify-center">
-                    <span className="text-gold font-semibold text-lg opacity-0 group-hover:opacity-100 transition-opacity">
-                      Visit Site &rarr;
-                    </span>
+      {/* Projects — alternating editorial layout */}
+      <section className="bg-cream pb-32">
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
+          <div className="space-y-32 lg:space-y-48">
+            {projects.map((project, i) => {
+              const isRight = i % 2 === 1;
+              return (
+                <a
+                  key={project.index}
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block"
+                >
+                  <div className={`grid grid-cols-12 gap-6 mb-8 ${isRight ? "md:ml-[15%]" : ""}`}>
+                    <div className="col-span-2 md:col-span-1 font-display italic text-2xl md:text-3xl text-gold-dark">
+                      {project.index}
+                    </div>
+                    <div className="col-span-10 md:col-span-11 flex items-center justify-between text-xs uppercase tracking-[0.2em] text-dark/60">
+                      <span>{project.category}</span>
+                      <span className="hidden md:block">{project.location}</span>
+                      <span>{project.year}</span>
+                    </div>
                   </div>
-                </div>
-                <div className="p-8">
-                  <p className="text-gold text-xs font-semibold uppercase tracking-wider">
-                    {project.category}
-                  </p>
-                  <h3 className="mt-2 text-2xl font-bold text-dark group-hover:text-gold transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="mt-3 text-gray text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs bg-gray-light text-dark-lighter rounded-full px-3 py-1"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+
+                  <div className={`relative overflow-hidden bg-dark ${isRight ? "md:ml-[15%]" : ""}`}>
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={2400}
+                      height={1500}
+                      className="w-full h-auto transition-transform duration-[1.2s] ease-out group-hover:scale-[1.03]"
+                    />
                   </div>
-                </div>
-              </a>
-            ))}
+
+                  <div className={`mt-8 grid grid-cols-12 gap-6 ${isRight ? "md:ml-[15%]" : ""}`}>
+                    <div className="col-span-12 md:col-span-6">
+                      <h2 className="font-display text-4xl md:text-6xl font-light text-dark group-hover:italic transition-all duration-500">
+                        {project.title}
+                      </h2>
+                    </div>
+                    <div className="col-span-12 md:col-span-5 md:col-start-8 flex flex-col justify-between gap-6">
+                      <p className="text-dark/70 leading-relaxed">
+                        {project.description}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <div className="flex flex-wrap gap-x-4 gap-y-1">
+                          {project.tags.slice(0, 3).map((tag) => (
+                            <span key={tag} className="text-xs uppercase tracking-[0.15em] text-dark/50">
+                              — {tag}
+                            </span>
+                          ))}
+                        </div>
+                        <span className="text-xs uppercase tracking-[0.2em] text-dark group-hover:text-gold-dark transition-colors whitespace-nowrap">
+                          Visit ↗
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
           </div>
 
-          {/* More projects coming */}
-          <div className="mt-16 text-center">
-            <p className="text-gray text-sm">
-              More projects on the way — check back soon.
+          {/* More coming */}
+          <div className="mt-32 text-center">
+            <p className="font-display italic text-2xl md:text-3xl text-dark/50">
+              More on the way.
             </p>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-dark">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white">
-            Want Your Business <span className="text-gold">Featured Here</span>?
+      <section className="bg-dark text-cream py-32 lg:py-48 relative overflow-hidden grain">
+        <div className="relative z-10 mx-auto max-w-[1600px] px-6 lg:px-12">
+          <h2 className="font-display display-tight text-5xl md:text-7xl lg:text-[9rem] font-light leading-[0.95]">
+            Want to be
+            <br />
+            <span className="italic text-gold">featured here?</span>
           </h2>
-          <p className="mt-4 text-white/60 max-w-xl mx-auto">
-            Let&apos;s create a website that you&apos;ll be proud to show off.
-          </p>
-          <Link
-            href="/contact"
-            className="mt-8 inline-block rounded-md bg-gold px-8 py-3.5 text-sm font-semibold text-dark transition-colors hover:bg-gold-light"
-          >
-            Start Your Project
-          </Link>
+          <div className="mt-12">
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-4 bg-gold text-dark px-8 py-5 hover:bg-cream transition-colors"
+            >
+              <span className="text-sm uppercase tracking-[0.2em]">Start a project</span>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </Link>
+          </div>
         </div>
       </section>
     </>

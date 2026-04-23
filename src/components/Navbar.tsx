@@ -1,17 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", label: "Index", number: "00" },
+  { href: "/portfolio", label: "Work", number: "01" },
+  { href: "/services", label: "Services", number: "02" },
+  { href: "/about", label: "About", number: "03" },
+  { href: "/blog", label: "Journal", number: "04" },
+  { href: "/contact", label: "Contact", number: "05" },
 ];
 
 export default function Navbar() {
@@ -27,94 +26,99 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Dark text on cream pages (anything except home)
+  const isDarkText = !isHome && !scrolled && !mobileOpen;
   const showBg = !isHome || scrolled || mobileOpen;
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${showBg ? "bg-dark/95 backdrop-blur-sm border-b border-white/10" : "bg-transparent border-b border-transparent"}`}>
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        showBg
+          ? isHome
+            ? "bg-dark/90 backdrop-blur-md border-b border-cream/10"
+            : "bg-cream/90 backdrop-blur-md border-b border-dark/10"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
         <div className="flex h-20 items-center justify-between">
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/images/logo-hero.png"
-              alt="Wilson Web Design"
-              width={586}
-              height={176}
-              className="h-10 w-auto"
-              priority
-            />
+          {/* Wordmark */}
+          <Link
+            href="/"
+            className={`font-display text-xl tracking-tight transition-colors ${
+              isDarkText ? "text-dark" : "text-cream"
+            }`}
+          >
+            <span className="font-light">Wilson</span>
+            <span className="italic text-gold ml-1">Web Design</span>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+          <div className="hidden md:flex items-center gap-10">
+            {navLinks.slice(1).map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors ${
+                className={`text-xs uppercase tracking-[0.2em] transition-colors ${
                   pathname === link.href
                     ? "text-gold"
-                    : "text-white/80 hover:text-gold"
+                    : isDarkText
+                    ? "text-dark hover:text-gold-dark"
+                    : "text-cream/80 hover:text-gold"
                 }`}
               >
+                <span className={`mr-2 ${isDarkText ? "text-dark/40" : "text-cream/40"}`}>
+                  {link.number}
+                </span>
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/contact"
-              className="rounded-md bg-gold px-5 py-2.5 text-sm font-semibold text-dark transition-colors hover:bg-gold-light"
-            >
-              Get a Quote
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white"
+            className={`md:hidden ${isDarkText ? "text-dark" : "text-cream"}`}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-            >
-              {mobileOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              )}
-            </svg>
+            <div className="flex flex-col gap-1.5">
+              <span
+                className={`block h-px w-6 bg-current transition-transform ${
+                  mobileOpen ? "translate-y-[7px] rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`block h-px w-6 bg-current transition-opacity ${
+                  mobileOpen ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`block h-px w-6 bg-current transition-transform ${
+                  mobileOpen ? "-translate-y-[7px] -rotate-45" : ""
+                }`}
+              />
+            </div>
           </button>
         </div>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile Nav Drawer */}
       {mobileOpen && (
-        <div className="md:hidden bg-dark border-t border-white/10">
-          <div className="px-6 py-4 space-y-3">
-            {navLinks.map((link) => (
+        <div className="md:hidden bg-dark border-t border-cream/10">
+          <div className="px-6 py-8 space-y-5">
+            {navLinks.slice(1).map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className={`block text-base font-medium py-2 ${
-                  pathname === link.href
-                    ? "text-gold"
-                    : "text-white/80 hover:text-gold"
+                className={`flex items-baseline gap-4 text-2xl font-display ${
+                  pathname === link.href ? "text-gold italic" : "text-cream/90"
                 }`}
               >
-                {link.label}
+                <span className="text-xs text-cream/40 tracking-[0.2em]">{link.number}</span>
+                <span>{link.label}</span>
               </Link>
             ))}
-            <Link
-              href="/contact"
-              onClick={() => setMobileOpen(false)}
-              className="block w-full text-center rounded-md bg-gold px-5 py-2.5 text-sm font-semibold text-dark mt-4"
-            >
-              Get a Quote
-            </Link>
           </div>
         </div>
       )}
