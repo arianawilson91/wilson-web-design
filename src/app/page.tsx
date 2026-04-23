@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import AnimatedSection from "@/components/AnimatedSection";
+import RotatingWord from "@/components/RotatingWord";
 
 const selectedWork = [
   {
@@ -59,7 +60,13 @@ export default function Home() {
               <h1 className="font-display display-tight text-[14vw] md:text-[11vw] lg:text-[9vw] font-light text-cream leading-[0.9]">
                 Websites,
                 <br />
-                <span className="italic text-gold">made well.</span>
+                <span className="italic text-gold inline-flex items-baseline overflow-hidden">
+                  made{"\u00A0"}
+                  <RotatingWord
+                    words={["well.", "fast.", "right.", "yours."]}
+                    interval={3000}
+                  />
+                </span>
               </h1>
             </AnimatedSection>
 
